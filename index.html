@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeCraft Studio - Your Creative Tech Partner</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        /* Reset CSS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f7e6f5;  /* Soft lavender */
+            color: #333;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: #36B1A0; /* Teal */
+            color: white;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Roboto', sans-serif;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            animation: colorChange 5s infinite alternate;
+            position: relative;
+        }
+
+        header .logo h1 {
+            font-size: 30px;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+        }
+
+        /* Navigation Menu */
+        header nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        header nav ul li a {
+            color: rgb(34, 31, 31);
+            font-weight: 500;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #FFAB73; /* Light peach */
+        }
+
+        /* Mobile menu toggle */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 25px;
+        }
+
+        .menu-toggle div {
+            background-color: white;
+            height: 4px;
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('build.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 150px 20px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            text-shadow: 3px 3px 12px rgba(0, 0, 0, 0.7);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.8;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        .cta-btn {
+            background-color: #FFAB73;  /* Light peach */
+            color: #36B1A0; /* Teal */
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            animation: colorChange 5s infinite alternate;
+        }
+
+        .cta-btn:hover {
+            background-color: #FF6F61; /* Coral */
+            transform: scale(1.05);
+        }
+
+        /* Expertise Section */
+        .expertise {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: rgb(54, 53, 53);
+        }
+
+        .expertise h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #36B1A0; /* Teal */
+        }
+
+        .industry-cards-wrapper {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+
+        .industry-card {
+            background-color: #FFFBF5;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .industry-card h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #36B1A0; /* Teal */
+            font-weight: 600;
+        }
+
+        .industry-card p {
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
+        .industry-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 20px;
+            background-color: #FF6F61; /* Coral */
+            text-align: center;
+            color: #fff;
+            animation: colorChange 5s infinite alternate;
+        }
+
+        .testimonials h2 {
+            font-size: 3.5rem;
+            margin-bottom: 40px;
+            font-weight: 700;
+            color: rgb(7, 6, 6);
+        }
+
+        .testimonial-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .testimonial-card {
+            background-color: rgb(15, 11, 11);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            font-style: italic;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial-card p {
+            font-size: 1.1rem;
+            opacity: 0.7;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-card h4 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #36B1A0; /* Teal */
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 3.5rem;
+            margin-bottom: 40px;
+            font-weight: 700;
+            color: #36B1A0; /* Teal */
+        }
+
+        .input-group {
+            margin-bottom: 25px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 18px;
+            font-size: 1.2rem;
+            border: 1px solid #131111;
+            border-radius: 6px;
+            margin-top: 10px;
+            transition: border 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #FFAB73;  /* Light peach */
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 150px;
+        }
+
+        button {
+            background-color: #36B1A0; /* Teal */
+            color: rgb(10, 10, 10);
+            padding: 18px 50px;
+            font-size: 1.3rem;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #FF6F61; /* Coral */
+            transform: scale(1.05);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #36B1A0; /* Teal */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        /* Keyframes for color change */
+        @keyframes colorChange {
+            0% {
+                background-color: #36B1A0; /* Teal */
+            }
+            25% {
+                background-color: #FF6F61; /* Coral */
+            }
+            50% {
+                background-color: #FFAB73; /* Light peach */
+            }
+            75% {
+                background-color: #36B1A0; /* Teal */
+            }
+            100% {
+                background-color: #FF6F61; /* Coral */
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .cta-btn {
+                font-size: 1.1rem;
+                padding: 15px 35px;
+            }
+
+            .industry-cards-wrapper {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .testimonial-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            header nav {
+                display: none;
+                width: 100%;
+                background-color: #36B1A0; /* Teal */
+                position: absolute;
+                top: 60px;
+                left: 0;
+                padding: 10px;
+            }
+
+            header nav.active {
+                display: block;
+            }
+
+            header nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+
+            header nav ul li a {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 15px;
+            }
+
+            .logo h1 {
+                font-size: 26px;
+            }
+
+            header nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <h1>CodeCraft Studio</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Your Creative Tech Partner</h1>
+            <p>Building exciting solutions for industries with over 20 years of experience.</p>
+            <a href="#contact" class="cta-btn">Let’s Connect!</a>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section id="expertise" class="expertise">
+        <h2>Our Expertise</h2>
+        <div class="industry-cards-wrapper">
+            <div class="industry-card">
+                <h3>Digital Innovation</h3>
+                <p>Creating engaging and innovative software solutions.</p>
+            </div>
+            <div class="industry-card">
+                <h3>App Development</h3>
+                <p>Building user-friendly mobile apps to elevate your business.</p>
+            </div>
+            <div class="industry-card">
+                <h3>Web Design</h3>
+                <p>Designing clean, modern, and responsive websites for your brand.</p>
+            </div>
+            <div class="industry-card">
+                <h3>Consulting</h3>
+                <p>Providing expert advice to help businesses succeed online.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <h2>What Our Clients Say</h2>
+        <div class="testimonial-cards">
+            <div class="testimonial-card">
+                <p>"CodeCraft Studio in Cape town has been an amazing partner in transforming our digital strategy. Their agents are also very friendly!"</p>
+                <h4>Emily Taylor, CEO</h4>
+            </div>
+            <div class="testimonial-card">
+                <p>"Their team's dedication to delivering innovative solutions made all the difference in our project. We couldn't have asked for a better partner!"</p>
+                <h4>Mark Johnson, Product Manager</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2>Contact Us</h2>
+        
+        <!-- WhatsApp Contact -->
+        <p><strong></strong></p>
+        <a href="https://wa.me/27684423555" target="_blank" class="cta-btn" style="padding: 12px 50px; font-size: 1.3rem; background-color: #25D366;">Chat on WhatsApp</a>
+
+        
+        <form action="#" method="POST">
+            <div class="input-group">
+                <input type="text" placeholder="Your Name" name="name" required>
+            </div>
+            <div class="input-group">
+                <input type="email" placeholder="Your Email" name="email" required>
+            </div>
+            <div class="input-group">
+                <textarea placeholder="Your Message" name="message" required></textarea>
+            </div>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 CodeCraft Studio. CapeTown. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            const nav = document.querySelector('header nav');
+            nav.classList.toggle('active');
+        }
+    </script>
+
+</body>
+</html>
